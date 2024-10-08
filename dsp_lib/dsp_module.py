@@ -243,3 +243,32 @@ def plot_iq( delay: float, fsymb_to_fsampl: float, phase: float, f0: float):
     plt.plot(res_sig.real, res_sig.imag, '.')
     plt.grid()
     plt.show()
+
+def save_cmplx_sig(signal, filename, data_type='int16'):
+    sig = np.round(signal)
+    s_re = signal.real
+    s_im = signal.imag
+    if data_type == 'int16':
+        arr_to_type_re = s_re.astype(np.int16)
+        arr_to_type_im = s_im.astype(np.int16)
+        arr_int = np.empty(len(signal) * 2, dtype=int)
+    if data_type == 'float32':
+        arr_to_type_re = s_re.astype(np.float32)
+        arr_to_type_im = s_im.astype(np.float32)
+        arr_int = np.empty(len(signal) * 2, dtype=float)
+    if data_type == 'float64':
+        arr_to_type_re = s_re.astype(np.float64)
+        arr_to_type_im = s_im.astype(np.float64)
+        arr_int = np.empty(len(signal) * 2, dtype=np.float64)
+        
+    arr_int[ : : 2] = arr_to_type_re
+    arr_int[1 : : 2] = arr_to_type_im
+    if data_type == 'int16':
+        saved_arr = arr_int.astype(np.int16)
+    if data_type == 'float32':
+        saved_arr = arr_int.astype(np.float32)
+    if data_type == 'float64':
+        saved_arr = arr_int.astype(np.float64)
+        
+    with open(filename, 'wb') as f:
+        saved_arr.tofile(f)
