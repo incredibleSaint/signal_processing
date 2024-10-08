@@ -222,7 +222,6 @@ def gen_qpsk_symbols(n_symb, fs):
     iq_ups[:len(iq) * fs:fs] = iq
     return iq_ups
 
-
 def plot_iq( delay: float, fsymb_to_fsampl: float, phase: float, f0: float):
     print(f"fract omega = {f0}, fsymb_to_fsampl = {fsymb_to_fsampl}, phase = {phase}")
     matplotlib.pyplot.close()
