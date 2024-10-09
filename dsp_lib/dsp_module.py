@@ -244,7 +244,6 @@ def plot_iq( delay: float, fsymb_to_fsampl: float, phase: float, f0: float):
     plt.show()
 
 def save_cmplx_sig(signal, filename, data_type='int16'):
-    sig = np.round(signal)
     s_re = signal.real
     s_im = signal.imag
     if data_type == 'int16':
