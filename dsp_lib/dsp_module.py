@@ -6,13 +6,12 @@ from commpy.filters import rrcosfilter
 import matplotlib
 import matplotlib.pyplot as plt
 from scipy.signal import butter, filtfilt
+
+
+
 #import ipympl
 #%matplotlib widget
 #%matplotlib inline
-
-
-def sum_double_val(a, b):
-    return a + b
 
 def read_signal(file_name, data_type, data_num=0, shift=0, separator=''):
     # Support of data_type: int16, float32, float64 
